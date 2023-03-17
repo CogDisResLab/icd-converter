@@ -1,0 +1,39 @@
+[package]
+name = "icd-converter"
+version = "1.0.0-alpha.1"
+edition = "2021"
+readme = "README.md"
+repository = "https://github.com/CogDisResLab/icd-converter"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+name = "icd_converter_lib"
+path = "src/icd_converter/lib.rs"
+crate-type = ["lib"]
+
+[[bin]]
+name = "icd_converter"
+path = "src/icd_converter/main.rs"
+
+[dependencies]
+
+
+[build]
+jobs = 1
+incremental = true
+
+[profile.dev]
+opt-level = 0
+debug = true
+debug-assertions = true
+overflow-checks = true
+lto = false
+
+[profile.release]
+opt-level = 's'
+debug = false
+debug-assertions = false
+strip = 'true'
+overflow-checks = true
+lto = true
+codegen-units = 1
