@@ -16,6 +16,10 @@ name = "icd_converter"
 path = "src/icd_converter/main.rs"
 
 [dependencies]
+clap = { version = "4.1.9", features = ["cargo", "debug", "env", "string", "unicode", "derive"] }
+rocket = { version = "0.4.11", features = ["sse", "tls"] }
+serde_json = { version = "1.0.94", features = ["indexmap", "float_roundtrip", "arbitrary_precision", "preserve_order"] }
+tokio = { version = "1.26.0", features = ["full"] }
 
 
 [build]
