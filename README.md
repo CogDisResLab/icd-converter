@@ -37,4 +37,4 @@ This project adheres to the Contributor Covenant [code of conduct](CODE_OF_CONDU
 
 ## Acknowledgements
 
-This project is under development by the [Cognitive Disorders Research Lab](https://cogdisreslab.org) at the University of Toledo Medical Center, College of Medicine and Life Sciences. The Lab is currently led by Dr. [Robert E. Smith, M.D., Ph.D.](https://www.utoledo.edu/med/depts/neurosciences/smith.html)
+This project is under development by the [Cognitive Disorders Research Lab](https://cogdisreslab.org) at the University of Toledo Medical Center, College of Medicine and Life Sciences. The Lab is currently led by Dr. [Robert E. Smith, M.D., Ph.D.](https://www.utoledo.edu/med/depts/neurosciences/smith.html) and is situated in the [Department of Neurosciences](https://www.utoledo.edu/med/depts/neurosciences/).
