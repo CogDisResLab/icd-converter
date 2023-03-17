@@ -8,7 +8,7 @@ repository = "https://github.com/CogDisResLab/icd-converter"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [lib]
 name = "icd_converter_lib"
-path = "src/icd_converter/lib.rs"
+path = "src/icd_converter_lib/lib.rs"
 crate-type = ["lib"]
 
 [[bin]]
