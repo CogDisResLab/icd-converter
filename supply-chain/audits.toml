@@ -1,0 +1,19 @@
+
+# cargo-vet audits file
+
+[[audits.clap]]
+who = "Ali Sajid Imami <395482+AliSajid@users.noreply.github.com>"
+criteria = "safe-to-deploy"
+version = "4.1.9"
+
+[[audits.rocket]]
+who = "Ali Sajid Imami <395482+AliSajid@users.noreply.github.com>"
+criteria = "safe-to-deploy"
+version = "0.5.0-rc.2"
+notes = "Minimal Unsafe code added. Only necessary unsafe code."
+
+[[audits.serde_json]]
+who = "Ali Sajid Imami <395482+AliSajid@users.noreply.github.com>"
+criteria = "safe-to-deploy"
+version = "1.0.92"
+notes = "Some `unsafe` blocks but are only used for conversion to `u8`."
