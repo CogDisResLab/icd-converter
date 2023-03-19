@@ -12,7 +12,7 @@ name: Semantic Release
 
 env:
   RUST_BACKTRACE: 1
-  SEMREL_RUST_VERSION: 2.1.46
+  SEMREL_RUST_VERSION: 1.0.0-alpha.8
 
 
 jobs:
@@ -21,13 +21,13 @@ jobs:
         runs-on: ubuntu-latest
         steps:
           - name: Checkout
-            uses: actions/checkout@v2
+            uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3.3.0
             with:
                 fetch-depth: 0
                 persist-credentials: false
 
           - name: Install Python
-            uses: actions/setup-python@v4
+            uses: actions/setup-python@d27e3f3d7c64b4bbf8e4abfb9b63b83e846e0435 # v4.5.0
             with:
               python-version: '3.10'
 
@@ -35,7 +35,7 @@ jobs:
             run: pip install -U commitizen
 
           - name: Install Rust Stable
-            uses: actions-rs/toolchain@v1
+            uses: actions-rs/toolchain@b2417cde72dcf67f306c0ae8e0828a81bf0b189f # v1.0.6
             with:
                 profile: minimal
                 toolchain: stable
@@ -43,16 +43,16 @@ jobs:
 
           # The release build is used in the Semantic Release step
           - name: Build
-            uses: actions-rs/cargo@v1
+            uses: actions-rs/cargo@ae10961054e4aa8b4aa7dffede299aaf087aa33b # v1.0.1
             with:
                 command: build
                 args: --release
 
           - name: Install Semantic Release Rust
-            run: cargo install semantic-release-cargo --version ${{ env.SEMREL_RUST_VERSION }}
+            run: cargo install semantic-release-rust --version ${{ env.SEMREL_RUST_VERSION }}
 
           - name: Semantic Release
-            uses: cycjimmy/semantic-release-action@v2
+            uses: cycjimmy/semantic-release-action@91ab76a4a393a8d0c4739e9aea1818b56bc953ea # v3.4.0
             id: semantic
             with:
                 semantic_version: 19
