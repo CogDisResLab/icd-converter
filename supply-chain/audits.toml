@@ -1,10 +1,50 @@
 
 # cargo-vet audits file
 
+[[audits.async-trait]]
+who = "Ali Sajid Imami <395482+AliSajid@users.noreply.github.com>"
+criteria = "safe-to-deploy"
+delta = "0.1.66 -> 0.1.67"
+
+[[audits.bitflags]]
+who = "Ali Sajid Imami <395482+AliSajid@users.noreply.github.com>"
+criteria = "safe-to-deploy"
+delta = "1.3.2 -> 2.0.1"
+notes = "Major update. No unsafe code added."
+
 [[audits.clap]]
 who = "Ali Sajid Imami <395482+AliSajid@users.noreply.github.com>"
 criteria = "safe-to-deploy"
 version = "4.1.9"
+
+[[audits.clap]]
+who = "Ali Sajid Imami <395482+AliSajid@users.noreply.github.com>"
+criteria = "safe-to-deploy"
+delta = "4.1.9 -> 4.1.11"
+notes = "Only documentation changes, no code changes."
+
+[[audits.io-lifetimes]]
+who = "Ali Sajid Imami <395482+AliSajid@users.noreply.github.com>"
+criteria = "safe-to-deploy"
+delta = "1.0.7 -> 1.0.8"
+notes = "Minimal changes to the crate, no unsafe code was added or removed."
+
+[[audits.is-terminal]]
+who = "Ali Sajid Imami <395482+AliSajid@users.noreply.github.com>"
+criteria = "safe-to-deploy"
+delta = "0.4.4 -> 0.4.5"
+notes = "Minimal changes, no unsafe code, no new dependencies, no new features, no new functionality, no new bugs, no new security issues."
+
+[[audits.ref-cast]]
+who = "Ali Sajid Imami <395482+AliSajid@users.noreply.github.com>"
+criteria = "safe-to-deploy"
+delta = "1.0.15 -> 1.0.16"
+notes = "Minimal changes, no unsafe code added or removed."
+
+[[audits.ref-cast-impl]]
+who = "Ali Sajid Imami <395482+AliSajid@users.noreply.github.com>"
+criteria = "safe-to-deploy"
+delta = "1.0.15 -> 1.0.16"
 
 [[audits.rocket]]
 who = "Ali Sajid Imami <395482+AliSajid@users.noreply.github.com>"
@@ -12,8 +52,30 @@ criteria = "safe-to-deploy"
 version = "0.5.0-rc.2"
 notes = "Minimal Unsafe code added. Only necessary unsafe code."
 
+[[audits.rustix]]
+who = "Ali Sajid Imami <395482+AliSajid@users.noreply.github.com>"
+criteria = "safe-to-deploy"
+delta = "0.36.9 -> 0.36.10"
+notes = "Minimal changes, no unsafe code, no new dependencies, no new features, no new functionality, no new bugs, no new security issues."
+
+[[audits.serde]]
+who = "Ali Sajid Imami <395482+AliSajid@users.noreply.github.com>"
+criteria = "safe-to-deploy"
+delta = "1.0.156 -> 1.0.157"
+notes = "Minor change to the build script and updated MSRV."
+
+[[audits.serde_derive]]
+who = "Ali Sajid Imami <395482+AliSajid@users.noreply.github.com>"
+criteria = "safe-to-deploy"
+delta = "1.0.156 -> 1.0.157"
+
 [[audits.serde_json]]
 who = "Ali Sajid Imami <395482+AliSajid@users.noreply.github.com>"
 criteria = "safe-to-deploy"
 version = "1.0.92"
 notes = "Some `unsafe` blocks but are only used for conversion to `u8`."
+
+[[audits.syn]]
+who = "Ali Sajid Imami <395482+AliSajid@users.noreply.github.com>"
+criteria = "safe-to-deploy"
+delta = "1.0.109 -> 2.0.2"
