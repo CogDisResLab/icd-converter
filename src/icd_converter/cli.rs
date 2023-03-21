@@ -50,22 +50,46 @@
 // *
 // *
 
-mod cli;
+use clap::{Args, Parser, Subcommand, ValueEnum};
 
-use clap::Parser;
+#[derive(Debug, Parser)]
+#[clap(author, version, about)]
+#[warn(clippy::upper_case_acronyms)]
+pub struct Cli {
+    #[clap(subcommand)]
+    pub command: Option<Commands>,
+}
 
-fn main() {
-    let cli = cli::Cli::parse();
+#[derive(Debug, Subcommand)]
+pub enum Commands {
+    Server(Server),
+    Match(Match),
+}
 
-    match &cli.command {
-        Some(cli::Commands::Server(server)) => {
-            println!("Starting server on {}:{}", server.address, server.port);
-        }
-        Some(cli::Commands::Match(m)) => {
-            println!("Matching {} from {:?} to {:?}", m.code, m.from, m.to);
-        }
-        None => {
-            println!("No command given");
-        }
-    }
+#[derive(Debug, Args)]
+pub struct Server {
+    #[clap(short, long)]
+    pub port: u16,
+
+    #[clap(short, long)]
+    pub address: String,
+}
+
+#[derive(Debug, Args)]
+pub struct Match {
+    #[clap(short, long, about)]
+    pub code: String,
+
+    #[clap(short, long)]
+    pub from: CodingSystem,
+
+    #[clap(short, long)]
+    pub to: CodingSystem,
+}
+
+#[derive(Debug, ValueEnum, Clone, Copy)]
+pub enum CodingSystem {
+    ICD11,
+    ICD10,
+    ICD9,
 }
