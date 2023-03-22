@@ -48,11 +48,24 @@ jobs:
 
           - name: Compile and release
             uses: rust-build/rust-build.action@7d5b0c135ddb825f7692d4d2d75e598184d15cec # v1.4.3
+            id: release
             env:
               GITHUB_TOKEN: ${{ secrets.ACTIONS_PAT_GITHUB }}
             with:
               MINIFY: true
               RUSTTARGET: ${{ matrix.target }}
               ARCHIVE_TYPES: ${{ matrix.archive }}
+              UPLOAD_URL: "none"
               ARCHIVE_NAME: icd-converter${{ env.RELEASE_VERSION }}${{matrix.platform}}
               EXTRA_FILES: "README.md LICENSE-APACHE LICENSE-MIT"
+
+          - name: Upload Release Artifacts
+            uses: actions/upload-release-asset@v1
+            id: upload-release-asset
+            env:
+              GITHUB_TOKEN: ${{ secrets.ACTIONS_PAT_GITHUB }}
+            with:
+              name: icd-converter${{ env.RELEASE_VERSION }}${{matrix.platform}}
+              path: |
+                ${{ steps.release.outputs.BUILT_ARCHIVE }}
+                ${{ steps.release.outputs.BUILT_CHECKSUM }}
