@@ -77,7 +77,7 @@ pub struct Server {
 
 #[derive(Debug, Args)]
 pub struct Match {
-    #[clap(short, long, about)]
+    #[clap(short, long)]
     pub code: String,
 
     #[clap(short, long)]
