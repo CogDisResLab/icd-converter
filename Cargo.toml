@@ -3,8 +3,13 @@ name = "icd-converter"
 version = "1.0.0-alpha.1"
 edition = "2021"
 readme = "README.md"
+rust-version = "1.64.0"
 repository = "https://github.com/CogDisResLab/icd-converter"
 license = "Apache-2.0 OR MIT"
+description = "A tool for quickly and efficiently converting between ICD-10 (CM and PCS), and ICD-9 (CM and PCS) codes. based on the GEMs from the CDC."
+documentation = "https://docs.rs/icd-converter"
+categories = ["command-line-utilities", "bioinformatics", ""]
+keywords = ["EHR", "ICD"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [lib]
