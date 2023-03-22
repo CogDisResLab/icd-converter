@@ -1,6 +1,6 @@
 [package]
 name = "icd-converter"
-version = "1.0.0-alpha.3"
+version = "1.0.0-alpha.4"
 edition = "2021"
 readme = "README.md"
 rust-version = "1.64.0"
