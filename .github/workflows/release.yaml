@@ -3,10 +3,10 @@ on:
     outputs:
       new_version:
         description: 'The new version to release'
-        value: ${{ jobs.semantic.outputs.new_release_version }}
+        value: ${{ jobs.release.outputs.new_release_version }}
       new_release_published:
         description: 'Whether a new release was published'
-        value: ${{ jobs.semantic.outputs.new_release_published }}
+        value: ${{ jobs.release.outputs.new_release_published }}
 
 name: Semantic Release
 
@@ -19,6 +19,9 @@ jobs:
     release:
         name: Semantic Release
         runs-on: ubuntu-latest
+        outputs:
+          new_version: ${{ steps.semantic.outputs.new_release_version }}
+          new_release_published: ${{ steps.semantic.outputs.new_release_published }}
         steps:
           - name: Checkout
             uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3.3.0
@@ -41,6 +44,9 @@ jobs:
                 toolchain: stable
                 override: true
 
+          - name: Cache dependencies
+            uses: Swatinem/rust-cache@6fd3edff6979b79f87531400ad694fb7f2c84b1f # v2.2.1
+
           # The release build is used in the Semantic Release step
           - name: Build
             uses: actions-rs/cargo@ae10961054e4aa8b4aa7dffede299aaf087aa33b # v1.0.1
@@ -50,9 +56,6 @@ jobs:
 
           - name: Install Semantic Release Rust
             run: cargo install semantic-release-cargo --version ${{ env.SEMREL_RUST_VERSION }}
-
-          - name: Cache dependencies
-            uses: Swatinem/rust-cache@6fd3edff6979b79f87531400ad694fb7f2c84b1f # v2.2.1
 
           - name: Semantic Release
             uses: cycjimmy/semantic-release-action@91ab76a4a393a8d0c4739e9aea1818b56bc953ea # v3.4.0
