@@ -66,23 +66,41 @@ pub enum Commands {
     Match(Match),
 }
 
+/// Start an API server to convert ICD-9, ICD-10, or ICD-11 codes to another coding system
 #[derive(Debug, Args)]
 pub struct Server {
-    #[clap(short, long)]
+    /// The port to listen on
+    ///
+    /// The port to listen on. Defaults to 8080.
+    #[clap(short, long, default_value = "8080")]
     pub port: u16,
 
-    #[clap(short, long)]
+    /// The address to listen on
+    ///
+    /// The address to listen on. Defaults to localhost.
+    #[clap(short, long, default_value = "localhost")]
     pub address: String,
 }
 
+/// Convert an ICD-9, ICD-10, or ICD-11 code to another coding system interactively
 #[derive(Debug, Args)]
 pub struct Match {
+    /// The code to be converted
+    ///
+    /// This specifies the code to be converted. It must be a valid ICD-10 or ICD-9 code.
     #[clap(short, long)]
     pub code: String,
 
+    /// The coding system of the code to be converted
+    ///
+    /// The coding system of the code to be converted.
+    /// This can be one of icd9, icd10, or icd11.
     #[clap(short, long)]
     pub from: CodingSystem,
 
+    /// The coding system to convert to
+    ///
+    /// The coding system to convert to. This can be one of icd9, icd10, or icd11.
     #[clap(short, long)]
     pub to: CodingSystem,
 }
