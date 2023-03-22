@@ -652,7 +652,7 @@ dependencies = [
 
 [[package]]
 name = "icd-converter"
-version = "1.0.0-alpha.3"
+version = "1.0.0-alpha.4"
 dependencies = [
  "clap",
  "csv",
