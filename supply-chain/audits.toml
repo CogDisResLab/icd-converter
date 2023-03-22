@@ -23,6 +23,16 @@ criteria = "safe-to-deploy"
 delta = "4.1.9 -> 4.1.11"
 notes = "Only documentation changes, no code changes."
 
+[[audits.csv]]
+who = "Ali Sajid Imami <395482+AliSajid@users.noreply.github.com>"
+criteria = "safe-to-deploy"
+version = "1.2.1"
+
+[[audits.csv-core]]
+who = "Ali Sajid Imami <395482+AliSajid@users.noreply.github.com>"
+criteria = "safe-to-deploy"
+version = "0.1.10"
+
 [[audits.io-lifetimes]]
 who = "Ali Sajid Imami <395482+AliSajid@users.noreply.github.com>"
 criteria = "safe-to-deploy"
