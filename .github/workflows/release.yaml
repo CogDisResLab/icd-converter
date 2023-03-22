@@ -37,22 +37,15 @@ jobs:
           - name: install commitizen
             run: pip install -U commitizen
 
-          - name: Install Rust Stable
-            uses: actions-rs/toolchain@b2417cde72dcf67f306c0ae8e0828a81bf0b189f # v1.0.6
-            with:
-                profile: minimal
-                toolchain: stable
-                override: true
+          - name: Install Rust
+            uses: dtolnay/rust-toolchain@stable
 
           - name: Cache dependencies
             uses: Swatinem/rust-cache@6fd3edff6979b79f87531400ad694fb7f2c84b1f # v2.2.1
 
           # The release build is used in the Semantic Release step
-          - name: Build
-            uses: actions-rs/cargo@ae10961054e4aa8b4aa7dffede299aaf087aa33b # v1.0.1
-            with:
-                command: build
-                args: --release
+          - name: Cargo Build Release
+            run: cargo build --verbose --release
 
           - name: Install Semantic Release Rust
             run: cargo install semantic-release-cargo --version ${{ env.SEMREL_RUST_VERSION }}
@@ -68,8 +61,3 @@ jobs:
             env:
                 GITHUB_TOKEN: ${{ secrets.ACTIONS_PAT_GITHUB }}
                 CARGO_REGISTRY_TOKEN: ${{ secrets.SEMREL_CRATES_IO }}
-
-          - name: Dump Outputs
-            run: |
-              echo "new_version: ${{ steps.semantic.outputs.new_release_version }}"
-              echo "new_release_published: ${{ steps.semantic.outputs.new_release_published }}"
