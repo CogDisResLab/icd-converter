@@ -311,6 +311,15 @@ jobs:
     uses: ./.github/workflows/release.yaml
     secrets: inherit # pragma: allowlist secret
 
+  intermediate-debugging:
+    needs: [semantic-release]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Debug
+        run: |
+          echo "new_version: ${{ needs.semantic-release.outputs.new_version }}"
+          echo "new_release_published: ${{ needs.semantic-release.outputs.new_release_published }}"
+
   upload-release-artifacts:
     needs: [semantic-release]
     if: ${{ needs.semantic-release.outputs.new_release_published == 'true' }}
